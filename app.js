@@ -3,13 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 
 
-//Connecting to db
-mongoose.connect("mongodb://localhost/bizzhired").then(() => console.log('Connection was successfull.......'));
+// Connecting to db
+mongoose.connect("mongodb://localhost:27017/bizzhired").then(() => console.log('Connection was successfull.......'));
 
-//Middleware
-
-
-
+// Middleware
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
@@ -19,11 +16,13 @@ const pincodeRoute = require('./Routes/pincode.route');
 const loginDataRoute = require('./Routes/loginData.route');
 const nationalityRoute = require('./Routes/nationalityData.route');
 const workingSectorRoute = require('./Routes/workingSector.route');
+const profileRoute = require('./Routes/profile.route');
 
 app.use('/pincodes', pincodeRoute);
 app.use('/loginData', loginDataRoute);
 app.use('/nationalityData', nationalityRoute);
 app.use('/careerOptionsData', workingSectorRoute);
+app.use('/profile', profileRoute);
 
 
 // app.use(express.json);
